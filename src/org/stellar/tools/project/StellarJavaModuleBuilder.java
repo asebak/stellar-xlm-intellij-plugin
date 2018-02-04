@@ -48,7 +48,7 @@ import static org.stellar.tools.utils.FileUtilities.SEPARATOR;
 @NoArgsConstructor
 public class StellarJavaModuleBuilder extends JavaModuleBuilder {
     private static final ProjectType PI_PROJECT_TYPE = new ProjectType("STELLAR_JAVA");
-    private static final String PROJECT_NAME = "Stellar Java App";
+    private static final String PROJECT_NAME = "Stellar";
     private String packageName;
     @Nullable
     private File[] jarsToAdd;
