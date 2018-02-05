@@ -16,18 +16,34 @@
     ]]>
   </change-notes>
 
-  <depends>com.intellij.modules.java</depends>
+  <!--<depends>com.intellij.modules.java</depends>-->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.lang</depends>
 
   <idea-version since-build="145.0"/>
 
 
   <extensions defaultExtensionNs="com.intellij">
-    <moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>
+    <!--<moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>-->
+    <projectTemplatesFactory implementation="org.stellar.tools.project.StellarTemplatesFactory"/>
 
   </extensions>
 
   <actions>
-    <!-- Add your actions here -->
+    <group id="StellarGroup" text="Stellar" popup="true" icon="/stellaricon.png">
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <action class="org.stellar.tools.actions.Concepts" id="org.stellar.tools.actions.Concepts"
+              text="Concepts" description="Stellar Concepts"/>
+    </group>
+
+    <!--<group id="StellarConceptGroup" text="Concepts" popup="true">-->
+      <!--<add-to-group group-id="StellarGroup" anchor="first"/>-->
+
+  <!--</group>-->
+
+
+
+
   </actions>
 
 </idea-plugin>
