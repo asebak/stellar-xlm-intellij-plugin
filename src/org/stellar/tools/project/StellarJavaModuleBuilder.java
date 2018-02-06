@@ -1,10 +1,7 @@
 package org.stellar.tools.project;
 
 import com.google.common.io.Files;
-import com.intellij.ide.util.projectWizard.JavaModuleBuilder;
-import com.intellij.ide.util.projectWizard.ModuleBuilder;
-import com.intellij.ide.util.projectWizard.ModuleWizardStep;
-import com.intellij.ide.util.projectWizard.WizardContext;
+import com.intellij.ide.util.projectWizard.*;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.module.JavaModuleType;
 import com.intellij.openapi.module.Module;
@@ -14,7 +11,13 @@ import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.DumbAwareRunnable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectType;
+import com.intellij.openapi.projectRoots.JavaSdk;
+import com.intellij.openapi.projectRoots.ProjectJdkTable;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.openapi.roots.ModifiableRootModel;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.Pair;
@@ -47,7 +50,7 @@ import static org.stellar.tools.utils.FileUtilities.SEPARATOR;
 @Setter
 @NoArgsConstructor
 public class StellarJavaModuleBuilder extends JavaModuleBuilder {
-    private static final ProjectType PI_PROJECT_TYPE = new ProjectType("STELLAR_JAVA");
+    private static final ProjectType PROJECT_TYPE = new ProjectType("STELLAR_JAVA");
     private static final String PROJECT_NAME = "Stellar";
     private String packageName;
     @Nullable
@@ -68,7 +71,13 @@ public class StellarJavaModuleBuilder extends JavaModuleBuilder {
 
         final VirtualFile root = createAndGetContentEntry();
         rootModel.addContentEntry(root);
-
+//        final JavaSdk javaSdkType = JavaSdk.getInstance();
+//        final ProjectJdkTable jdkTable = ProjectJdkTable.getInstance();
+//        final Sdk sdkByName = jdkTable.findJdk(pathOrName, javaSdkType.getName());
+        Sdk[] allJdks = ProjectJdkTable.getInstance().getAllJdks();
+        if(allJdks.length > 0) {
+            myJdk = allJdks[0];
+        }
         if (myJdk != null) {
             rootModel.setSdk(myJdk);
         } else {
@@ -88,8 +97,14 @@ public class StellarJavaModuleBuilder extends JavaModuleBuilder {
     private void createProjectFiles(@NotNull final ModifiableRootModel rootModel, @NotNull final Project project) {
         ProjectUtils.runWhenInitialized(project, new DumbAwareRunnable() {
             public void run() {
+//                ProjectRootManager instance = ProjectRootManager.getInstance(project);
+//                Sdk projectSdk = instance.getProjectSdk();
+//                rootModel.setSdk(projectSdk);
                 String srcPath = project.getBasePath() + File.separator + "src";
                 addJarFiles(rootModel.getModule());
+                if(packageName == null){
+                    packageName = "org.stellar.sample";
+                }
                 String[] directoriesToMake = packageName.split(Pattern.quote("."));
                 for (String directory : directoriesToMake) {
                     try {
@@ -106,7 +121,6 @@ public class StellarJavaModuleBuilder extends JavaModuleBuilder {
                             put("packagename", packageName);
                         }}).build()
                         .toFile();
-                ProjectUtils.addProjectConfiguration(rootModel.getModule(), packageName + ".Main", getPresentableName());
             }
         });
     }
@@ -129,6 +143,7 @@ public class StellarJavaModuleBuilder extends JavaModuleBuilder {
     public ModuleType getModuleType() {
         return StdModuleTypes.JAVA;
     }
+
 
     /**
      * Big icon is Java modules
@@ -227,7 +242,7 @@ public class StellarJavaModuleBuilder extends JavaModuleBuilder {
      */
     @Override
     protected ProjectType getProjectType() {
-        return PI_PROJECT_TYPE;
+        return PROJECT_TYPE;
     }
 
     private void addJarFiles(Module module) {
@@ -242,20 +257,12 @@ public class StellarJavaModuleBuilder extends JavaModuleBuilder {
         }
     }
 
-    /**
-     * Adds a custom wizard GUI
-     * @param context
-     * @param parentDisposable
-     * @return
-     */
-    @Nullable
     @Override
-    public ModuleWizardStep getCustomOptionsStep(WizardContext context, Disposable parentDisposable) {
-
-        StellarJavaModuleStep step = new StellarJavaModuleStep(this);
-        Disposer.register(parentDisposable, step);
-        return step;
+    public ModuleWizardStep[] createWizardSteps(@NotNull WizardContext wizardContext, @NotNull ModulesProvider modulesProvider) {
+        return new ModuleWizardStep[]{new StellarJavaModuleStep(this)};
+//        return ModuleWizardStep.EMPTY_ARRAY;
     }
+
 
     /**
      * Not Needed

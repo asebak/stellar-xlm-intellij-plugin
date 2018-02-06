@@ -11,7 +11,7 @@
   <change-notes><![CDATA[
         <b>Version 0.1</b>
         <ul>
-           <li>Stellar Java Project Template</li>
+           <li>Basic Stellar SDK Support</li>
         </ul>
     ]]>
   </change-notes>
@@ -24,7 +24,7 @@
 
 
   <extensions defaultExtensionNs="com.intellij">
-    <!--<moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>-->
+    <moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>
     <projectTemplatesFactory implementation="org.stellar.tools.project.StellarTemplatesFactory"/>
 
   </extensions>
@@ -32,8 +32,8 @@
   <actions>
     <group id="StellarGroup" text="Stellar" popup="true" icon="/stellaricon.png">
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action class="org.stellar.tools.actions.Concepts" id="org.stellar.tools.actions.Concepts"
-              text="Concepts" description="Stellar Concepts"/>
+      <action class="org.stellar.tools.actions.Concepts" id="org.stellar.tools.actions.Concepts" text="Concepts" description="Stellar Concepts" icon="/help.png"/>
+      <action id="StellarSearch" class="org.stellar.tools.actions.GTSearch" text="Galactic Talk Search" description="Search on  Galactic Talk" icon="/search.png"/>
     </group>
 
     <!--<group id="StellarConceptGroup" text="Concepts" popup="true">-->

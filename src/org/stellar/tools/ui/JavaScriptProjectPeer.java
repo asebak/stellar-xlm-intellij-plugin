@@ -8,7 +8,9 @@ import org.jetbrains.annotations.Nullable;
 import org.stellar.tools.project.StellarJavascriptTemplate;
 
 import javax.swing.*;
-
+//public class JavaScriptProjectPeer{
+//
+//}
 public class JavaScriptProjectPeer implements WebProjectGenerator.GeneratorPeer<StellarJavascriptTemplate.JSStellarProjectSettings> {
     @NotNull
     @Override

@@ -13,6 +13,6 @@ public class StellarIcons {
     }
 
     public static Icon getIcon(){
-        return IconLoader.getIcon("/stellarlogo.png", StellarIcons.class);
+        return IconLoader.getIcon("/stellaricon.png", StellarIcons.class);
     }
 }
