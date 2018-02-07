@@ -1,7 +1,6 @@
 package org.stellar.tools.project;
 
 import com.intellij.ide.util.projectWizard.WizardContext;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.platform.ProjectTemplate;
 import com.intellij.platform.ProjectTemplatesFactory;
 import org.jetbrains.annotations.NotNull;

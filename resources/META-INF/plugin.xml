@@ -19,31 +19,27 @@
   <depends>com.intellij.modules.java</depends>
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
-  <depends>JavaScript</depends>
   <idea-version since-build="145.0"/>
 
 
   <extensions defaultExtensionNs="com.intellij">
-    <!--<moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>-->
     <projectTemplatesFactory implementation="org.stellar.tools.project.StellarTemplatesFactory"/>
-    <projectService serviceImplementation="com.intellij.javascript.nodejs.interpreter.NodeJsInterpreterManager"/>
 
   </extensions>
 
   <actions>
-    <group id="StellarGroup" text="Stellar" popup="true" icon="/stellaricon.png">
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action class="org.stellar.tools.actions.Concepts" id="org.stellar.tools.actions.Concepts" text="Concepts" description="Stellar Concepts" icon="/help.png"/>
+    <group id="StellarDevGroup" text="Stellar" popup="true" icon="/stellaricon.png">
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
       <action id="StellarSearch" class="org.stellar.tools.actions.GTSearch" text="Galactic Talk Search" description="Search on  Galactic Talk" icon="/search.png"/>
     </group>
+    <group id="StellarHelpGroup" text="Stellar Help" popup="true" icon="/stellaricon.png">
+      <add-to-group group-id="HelpMenu" anchor="last"/>
+      <action class="org.stellar.tools.actions.GettingStartedHelp" id="org.stellar.tools.actions.GettingStartedHelp" text="Getting Started" description="Getting Started Help"/>
+      <action class="org.stellar.tools.actions.LabHelp" id="org.stellar.tools.actions.LabHelp" text="Lab" description="Lab Help"/>
+      <action class="org.stellar.tools.actions.AccountViewerHelp" id="org.stellar.tools.actions.AccountViewerHelp" text="Account Viewer" description="Account Viewer Help"/>
+      <action class="org.stellar.tools.actions.DashboardHelp" id="org.stellar.tools.actions.DashboardHelp" text="Dashboard" description="Dashboard Help"/>
 
-    <!--<group id="StellarConceptGroup" text="Concepts" popup="true">-->
-      <!--<add-to-group group-id="StellarGroup" anchor="first"/>-->
-
-  <!--</group>-->
-
-
-
+    </group>
 
   </actions>
 
