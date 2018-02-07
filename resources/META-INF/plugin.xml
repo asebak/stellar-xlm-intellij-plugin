@@ -16,16 +16,17 @@
     ]]>
   </change-notes>
 
-  <!--<depends>com.intellij.modules.java</depends>-->
+  <depends>com.intellij.modules.java</depends>
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
-
+  <depends>JavaScript</depends>
   <idea-version since-build="145.0"/>
 
 
   <extensions defaultExtensionNs="com.intellij">
-    <moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>
+    <!--<moduleBuilder builderClass="org.stellar.tools.project.StellarJavaModuleBuilder"/>-->
     <projectTemplatesFactory implementation="org.stellar.tools.project.StellarTemplatesFactory"/>
+    <projectService serviceImplementation="com.intellij.javascript.nodejs.interpreter.NodeJsInterpreterManager"/>
 
   </extensions>
 

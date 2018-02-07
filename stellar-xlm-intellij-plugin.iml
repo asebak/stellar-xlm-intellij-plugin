@@ -10,5 +10,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libraries" level="project" />
+    <orderEntry type="library" name="JavaScriptLanguage" level="project" />
+    <orderEntry type="library" name="js-test-common" level="project" />
+    <orderEntry type="library" name="resources_en" level="project" />
   </component>
 </module>

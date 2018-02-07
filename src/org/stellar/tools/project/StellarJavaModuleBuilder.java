@@ -1,8 +1,9 @@
 package org.stellar.tools.project;
 
 import com.google.common.io.Files;
-import com.intellij.ide.util.projectWizard.*;
-import com.intellij.openapi.Disposable;
+import com.intellij.ide.util.projectWizard.JavaModuleBuilder;
+import com.intellij.ide.util.projectWizard.ModuleWizardStep;
+import com.intellij.ide.util.projectWizard.WizardContext;
 import com.intellij.openapi.module.JavaModuleType;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleType;
@@ -11,14 +12,10 @@ import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.DumbAwareRunnable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectType;
-import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.ProjectJdkTable;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.openapi.roots.ModifiableRootModel;
-import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.util.io.FileUtil;
@@ -34,7 +31,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.stellar.tools.localization.StellarBundle;
 import org.stellar.tools.ui.StellarJavaModuleStep;
-import org.stellar.tools.utils.FileUtilities;
 import org.stellar.tools.utils.ProjectUtils;
 import org.stellar.tools.utils.Template;
 
@@ -44,12 +40,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static org.stellar.tools.utils.FileUtilities.SEPARATOR;
-
 @Getter
 @Setter
 @NoArgsConstructor
 public class StellarJavaModuleBuilder extends JavaModuleBuilder {
+    public static final String SEPARATOR = "/";
     private static final ProjectType PROJECT_TYPE = new ProjectType("STELLAR_JAVA");
     private static final String PROJECT_NAME = "Stellar";
     private String packageName;
