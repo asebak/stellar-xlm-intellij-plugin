@@ -1,8 +1,8 @@
 <idea-plugin>
   <id>org.stellar.intellij.plugin</id>
   <name>Stellar</name>
-  <version>1.0</version>
-  <!--<vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor> -->
+  <version>0.1</version>
+  <vendor email="radio_frequency at hotmail dot com" url="">At Sebak</vendor>
 
   <description><![CDATA[
     <p>Intellij Support for Stellar based projects</p>
@@ -29,7 +29,7 @@
 
   <actions>
     <group id="StellarDevGroup" text="Stellar" popup="true" icon="/stellaricon.png">
-      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="la"/>
       <action id="StellarSearch" class="org.stellar.tools.actions.GTSearch" text="Galactic Talk Search" description="Search on  Galactic Talk" icon="/search.png"/>
     </group>
     <group id="StellarHelpGroup" text="Stellar Help" popup="true" icon="/stellaricon.png">
