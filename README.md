@@ -4,7 +4,7 @@ Stellar SDK IntelliJ Plugin   ![overviewlogo](resources/docs/stellarlogolarge.pn
 [![Build Status](https://travis-ci.org/asebak/stellar-xlm-intellij-plugin.svg?branch=master)](https://travis-ci.org/asebak/stellar-xlm-intellij-plugin)
 
 ```
-https://plugins.jetbrains.com/plugin/???
+https://plugins.jetbrains.com/plugin/10432
 ```
 
 Stellar SDK IntelliJ is a Plugin for IntelliJ IDEA that makes it easier to develop apps on the Stellar platform.
