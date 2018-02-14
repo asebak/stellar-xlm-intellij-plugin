@@ -9,13 +9,11 @@ https://plugins.jetbrains.com/plugin/10432
 
 Stellar SDK IntelliJ is a Plugin for IntelliJ IDEA that makes it easier to develop apps on the Stellar platform.
 
-  - Supports Java and Javascript project templates
+  - Supports Java, Javascript, Python and Golang project templates
   - Help Section integrated into the IDE
   - Galactic Talk search queries.
 
-
 ### Future Add Ons to 
-  - Add more project templates such as Golang, python etc.
   - More internal tools to help with development.
   - Requests coming from the community.
   
