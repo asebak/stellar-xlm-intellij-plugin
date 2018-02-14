@@ -14,6 +14,11 @@ Stellar SDK IntelliJ is a Plugin for IntelliJ IDEA that makes it easier to devel
   - Galactic Talk search queries.
 
 
+### Future Add Ons to 
+  - Add more project templates such as Golang, python etc.
+  - More internal tools to help with development.
+  - Requests coming from the community.
+  
 ### How To Use
 
 - Create a new project : 
