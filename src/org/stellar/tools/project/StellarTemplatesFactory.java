@@ -26,7 +26,8 @@ public class StellarTemplatesFactory extends ProjectTemplatesFactory {
             return new ProjectTemplate[]{
                     new StellarJavascriptTemplate(),
                     new StellarJavaTemplate(),
-                    new StellarGoTemplate()
+                    new StellarGoTemplate(),
+                    new StellarPythonTemplate()
             };
     }
 }
