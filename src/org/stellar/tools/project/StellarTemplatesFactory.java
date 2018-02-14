@@ -25,7 +25,8 @@ public class StellarTemplatesFactory extends ProjectTemplatesFactory {
     public ProjectTemplate[] createTemplates(String s, WizardContext wizardContext) {
             return new ProjectTemplate[]{
                     new StellarJavascriptTemplate(),
-                    new StellarJavaTemplate()
+                    new StellarJavaTemplate(),
+                    new StellarGoTemplate()
             };
     }
 }
